@@ -1,0 +1,92 @@
+{% extends 'layout.njk' %}
+
+{% block title %}
+  <title>{{ orphanage.name }}| Happy</title>
+{% endblock %}
+
+{% block map %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/css/sidebar.css"/>
+  <link rel="stylesheet" href="/css/map.css"/>
+  <link rel="stylesheet" href="/css/buttons.css"/>
+  <link rel="stylesheet" href="/css/show-orphanage.css"/>
+{% endblock %}
+
+{% block content %}
+  <div id="page-orphanage">
+    <aside class="animate-toright sidebar">
+      <img src="/images/map-marker.svg" alt="Happy">
+      <footer>
+        <button onclick="history.back()">
+          <img src="/images/arrow-back.svg" alt="Voltar">
+        </button>
+      </footer>
+    </aside>
+
+    <main class="animate-appear with-sidebar">
+      <div class="orphanage-details">
+        <img src="{{orphanage.firstImage}}" alt="{{orphanage.name}}"/>
+
+        <div class="images">
+          {% for orphan in orphanage.images %}
+            <button onclick="selectImage(event)" class="active" type="button">
+              <img src="{{orphan}}" alt="{{orphanage.name}}"/>
+            </button>
+          {% endfor %}
+        </div>
+
+        <div class="orphanage-details-content">
+          <h1>{{ orphanage.name }}</h1>
+          <p>{{orphanage.about}}</p>
+
+          <div class="map-container">
+            <div id="mapid"></div>
+            <span data-lat="{{orphanage.lat}}" data-lng="{{orphanage.lng}}"></span>
+
+            <footer>
+              <a target="_blank" href="https://maps.google.com/mobile?q={{orphanage.lat}},{{orphanage.lng}}&z=15">Ver rotas no Google Maps</a>
+            </footer>
+          </div>
+
+          <hr/>
+
+          <h2>Instruções para visita</h2>
+
+          <p>{{orphanage.instructions}}</p>
+
+          <div class="open-details">
+            <div class="hour">
+              <img src="/images/clock.svg" alt="Horários"/>
+              {{orphanage.opening_hours}}
+            </div>
+
+            {% if orphanage.open_on_weekends %}
+              <div class="open-on-weekends open">
+                <img src="/images/info.svg" alt="Informações"/>
+                Atendemos fim de semana
+              </div>
+            {% else %}
+              <div class="open-on-weekends closed">
+                <img src="/images/info-red.svg" alt="Informações"/>
+                Não atendemos fim de semana
+              </div>
+            {% endif %}
+          </div>
+
+          <a href="https://api.whatsapp.com/send?l=pt-pt_BR&phone={{orphanage.whatsapp}}&text=Olá, quero conversar sobre visitas no {{orphanage.name}}." target="_blank" class="primary-button" type="button">
+            <img src="/images/whatsapp.svg" alt="Chamar no whatsapp"/>
+            Entrar em contato
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/scripts/show-orphanage.js"></script>
+{% endblock %}

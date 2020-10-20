@@ -1,0 +1,90 @@
+#page-landing {
+  background: var(--color-gradient-blue);
+  min-height: 100vh;
+  text-align: center;
+  color: var(--color-text-secondary);
+  display: flex;
+}
+
+#container {
+  width: min(80%, 112rem);
+  margin: auto;
+}
+
+.brand {
+  animation-delay: 50ms;
+}
+
+.location {
+  animation-delay: 100ms;
+}
+
+.location, h1, .visit p {
+  height: 16vh;
+}
+
+main h1 {
+  font-size: clamp(4rem, 8vw, 8.4rem);
+  font-weight: 800;
+  line-height: 0.88;
+  animation-delay: 150ms;
+}
+
+.visit p {
+  animation-delay: 200ms;
+}
+
+.visit a {
+  background: var(--color-landing-btn);
+  width: 8rem;
+  height: 8rem;
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  transition: background 0.4s;
+  animation-delay: 250ms;
+}
+
+.visit a:hover {
+  background: var(--color-hover-btn);
+}
+
+@media (min-width: 760px) {
+  #container {
+    background: url("../images/bg.svg") no-repeat 80% / clamp(30rem, 54vw, 56rem);
+    padding: 5rem 2rem;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .location, h1, .visit p {
+    height: initial;
+    text-align: initial;
+  }
+  .location {
+    text-align: right;
+    font-size: 2.4rem;
+    line-height: 1.5;
+  }
+  main h1 {
+    width: min(30rem, 80%);
+    margin: clamp(10%, 9vh, 12%) 0 4rem;
+  }
+  .visit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .visit p {
+    font-size: 2.4rem;
+    line-height: 1.5;
+    width: clamp(20rem, 20vw, 30rem);
+  }
+  .visit a {
+    margin: initial;
+  }
+}

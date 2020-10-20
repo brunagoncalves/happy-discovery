@@ -1,0 +1,49 @@
+{% extends 'layout.njk' %}
+
+{% block title %}
+  <title>Localizar Orfanatos | Happy</title>
+{% endblock %}
+
+{% block map %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/css/map-orphanages.css"/>
+{% endblock %}
+
+{% block content %}
+  <div id="page-orphanages">
+    <aside class="animate-toright">
+      <header>
+        <a href="/" title="Ir para página inicial">
+          <img src="/images/map-marker.svg" alt="Happy"/>
+        </a>
+        <h2>Escolha um orfanato no mapa</h2>
+        <p>Muitas crianças estão esperando sua visita :)</p>
+      </header>
+
+      <footer>
+        <strong>Rio do Sul</strong>
+        <p>Santa Catarina</p>
+      </footer>
+    </aside>
+
+    <div id="mapid" class="animate-appear"></div>
+
+    <div class="orphanages">
+      {% for orphanage in orphanages %}
+        <span hidden="hidden" data-id="{{orphanage.id}}" data-name="{{orphanage.name}}" data-lat="{{orphanage.lat}}" data-lng="{{orphanage.lng}}"></span>
+      {% endfor %}
+    </div>
+
+    <a href="/create-orphanage" class="add-orphanage" title="Cadastre um orfanato">
+      <img src="/images/plus.svg" alt="Adicionar orfanato"/>
+    </a>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/scripts/map-orphanages.js"></script>
+{% endblock %}
