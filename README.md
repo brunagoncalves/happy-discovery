@@ -3,7 +3,7 @@
 </h1>
 
 <h1 align="center">
-    <img alt="Happy" title="Happy" src="public/images/projeto.png" />
+    <img alt="Projeto Happy" title="Home Happy" src="public/images/projeto.png" />
 </h1>
 
 ## 🚀 Tecnologias
@@ -49,7 +49,7 @@ $ npm dev
 
 ## 📝 Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
