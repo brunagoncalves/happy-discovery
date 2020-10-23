@@ -1,5 +1,6 @@
 #page-orphanage {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
@@ -8,8 +9,8 @@ main {
 }
 
 .orphanage-details {
-  width: 70rem;
-  margin: 6.4rem auto;
+  width: min(90%, 70rem);
+  margin: 3.2rem auto;
   background: var(--color-background-secondary);
   border: 1px solid var(--color-border-input);
   border-radius: 2rem;
@@ -24,8 +25,9 @@ main {
 
 .images {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fill, 8.8rem);
   column-gap: 1.6rem;
+  justify-content: center;
   margin: 1.6rem 4rem 0;
 }
 
@@ -50,13 +52,13 @@ main {
 }
 
 .orphanage-details-content {
-  padding: 8rem;
+  padding: clamp(3rem, 5vw, 8rem)
 }
 
 .orphanage-details-content h1 {
   color: var(--color-text-title);
   font-size: 5.4rem;
-  line-height: 1.5;
+  line-height: 1;
   margin-bottom: 0.8rem;
 }
 
@@ -76,15 +78,15 @@ main {
 
 .orphanage-details-content h2 {
   font-size: 3.6rem;
-  line-height: 1.5rem;
+  line-height: 1.5;
   color: var(--color-text-title);
 }
 
 .open-details {
   margin-top: 2.4rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, auto);
+  gap: 1.6rem;
   line-height: 1.5;
 }
 
@@ -119,4 +121,10 @@ main {
   background: var(--color-degrade-red);
   border: 1px solid #ffbcd4;
   color: #ff669d;
+}
+
+@media(min-width: 760px) {
+  .orphanage-details {
+    margin: 6.4rem auto;
+  }
 }

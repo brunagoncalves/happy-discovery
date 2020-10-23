@@ -1,11 +1,11 @@
 form {
-  width: 70rem;
-  margin: 6.4rem auto;
+  width: min(90%, 70rem);
   background: var(--color-background-secondary);
   border: 1px solid var(--color-border-input);
   border-radius: 2rem;
   overflow: hidden;
-  padding: 8rem;
+  padding: 4rem;
+  margin: 3.2rem auto;
 }
 
 fieldset+fieldset {
@@ -105,4 +105,10 @@ input::placeholder {
 
 .new-upload span:hover {
   background: var(--color-degrade-red);
+}
+
+@media (min-width: 760px) {
+  form {
+    margin: 6.4rem auto;
+  }
 }

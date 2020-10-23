@@ -1,5 +1,6 @@
 #page-create-orphanage {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
