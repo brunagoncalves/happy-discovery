@@ -70,3 +70,26 @@ function toggleSelect(event) {
   const input = document.querySelector('[name="open_on_weekends"]');
   input.value = button.dataset.value;
 }
+
+// Mask Phone
+const inputValue = document.querySelector('input[name="whatsapp"]');
+const field = inputValue.dataset.js;
+
+inputValue.addEventListener(
+  "input",
+  (e) => {
+    e.target.value = mask[field](e.target.value);
+  },
+  false
+);
+
+const mask = {
+  phone(value) {
+    return value
+      .replace(/\D/g, "") //Remove tudo o que não é dígito.
+      .replace(/(\d{2})(\d)/, "($1) $2") // Coloca parênteses em volta dos dois primeiros dígitos.
+      .replace(/(\d{4})(\d)/, "$1-$2") // Coloca hífen entre o quarto e o quinto dígitos.
+      .replace(/(\d{4})-(\d)(\d{4})/, "$1$2-$3") // Coloca o quinto digito para esquerda.
+      .replace(/(-\d{4})\d+?/, "$1"); // Depois do hifen ele permite somente 4 digitos.
+  },
+};
